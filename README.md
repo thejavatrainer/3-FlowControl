@@ -1,2 +1,12 @@
 # Module3-FlowControl
-Flow Control
+In this module, we will see and practice the expressions used in flow control.
+
+The covered topics will be:
+* if / if-else / if-elseif
+* switch
+* Loops
+  - for
+  - while
+  - do-while
+* break
+* continue
