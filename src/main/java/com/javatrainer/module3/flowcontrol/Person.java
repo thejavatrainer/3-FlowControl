@@ -1,5 +1,5 @@
 package com.javatrainer.module3.flowcontrol;
-
+import java.util.Scanner;
 import org.omg.CORBA.INTERNAL;
 
 public class Person {
@@ -42,16 +42,21 @@ public class Person {
     public static Person[] changePositionArray(Person[] a) {
         Person[] x = new Person[a.length];
         for (int i = 0; i < a.length; i++) {
-            x[i] = a[a.length - i + 1];
+            x[i] = a[a.length - i-1];
         }
         return x;
     }
 
+    public static int getSeconds(int a) {
+        return a*60;
+    }
+
 
     public static void main(String args[]) {
-
+        Scanner seconds= new Scanner(System.in);
         Person[] sir = new Person[3];
         Person[] sir2;
+        int secondsInput;
         sir[0] = new Person("Ana", 19);
         sir[1] = new Person("Anna", 11);
         sir[2] = new Person("Alex3", 18);
@@ -62,15 +67,17 @@ public class Person {
             } else {
                 System.out.println("Persona " + i + " Minor");
             }
-            sir2=changePositionArray(sir);
-            for (int i = 0; i < sir.length; i++) {
+            sir2 = changePositionArray(sir);
+            for ( i = 0; i < sir.length; i++) {
             }
-
 
 
         }
         System.out.println(" Ana age " + returnAnaAge(sir));
         System.out.println(" Ana index " + returnAnaIndex(sir));
+        System.out.print(" Get minutes");
+        secondsInput=seconds.nextInt();
+        System.out.println("seconds: "+getSeconds(secondsInput));
     }
 }
 

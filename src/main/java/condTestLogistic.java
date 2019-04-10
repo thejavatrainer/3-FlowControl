@@ -1,4 +1,4 @@
-public class condTestLogistic {
+public class CondTestLogistic {
     private String input[] = new String[]{"734", "985", "785", "734", "734", "785", "738", "983", "781", "781", "923", "785"};
     //    private Integer PackagesTotal = 0;
 //    private Integer ChecksTotal = 0;
@@ -21,21 +21,23 @@ public class condTestLogistic {
     private Integer Packages = 0;
 
 
-    public Boolean internal(String a) {
-        for (int i = 0; i < a.length(); i++) {
-            if (a.charAt(i) == '7') {
-                return true;
-            }
-        }
-        return false;
+    public Boolean isInternalItem(String a) {
+//        for (int i = 0; i < a.length(); i++) {
+//            if (a.charAt(i) == '7') {
+//                return true;
+//            }
+//        }
+//        return false;
+        return a.contains("7");
     }
     public Boolean Packages(String a) {
-        for (int i = 0; i < a.length(); i++) {
-            if (a.charAt(i) == '3') {
-                return true;
-            }
-        }
-        return false;
+//        for (int i = 0; i < a.length(); i++) {
+//            if (a.charAt(i) == '3') {
+//                return true;
+//            }
+//        }
+//        return false;
+        return a.contains("3");
     }
 
 //    public Boolean external(String a) {
@@ -50,79 +52,81 @@ public class condTestLogistic {
 
     public static void main(String args[]) {
         StringBuilder result = new StringBuilder();
-        condTestLogistic first = new condTestLogistic();
+        CondTestLogistic postOffice = new CondTestLogistic();
 
-        for (int i = 0; i < first.input.length; i++) {
-            first.Intenal = 0;
-            first.Packages = 0;
+        for (int i = 0; i < postOffice.input.length; i++) {
+            String postalItem = postOffice.input[i];
+            postOffice.Intenal = 0;
+            postOffice.Packages = 0;
 
-            for (int j = 0; j < first.input[i].length(); j++) {
-                if (first.internal(first.input[i]) || (first.Intenal == 8)) {
-                    first.Intenal = 8;
+            //"738"
+            for (int j = 0; j < postalItem.length(); j++) {
+                if (postOffice.isInternalItem(postalItem) || (postOffice.Intenal == 7)) {
+                    postOffice.Intenal = 7;
 
-                    switch (Character.getNumericValue(first.input[i].charAt(j))) { // or one from the specified types as parameter
+                    switch (postalItem.charAt(j)-'0') { // or one from the specified types as parameter
                         case 1: {
-                            first.InternalChecks++;
+                            postOffice.InternalChecks++;
                             break;
                         }
                         case 2: {
-                            if (first.Packages(first.input[i])) {
-                                first.InternalHeavy++;
+                            if (postOffice.Packages(postalItem)) {
+                                postOffice.InternalHeavy++;
                             }
                             break;
                         }
                         case 3: {
-                            first.InternalPackages++;
-                            first.Packages++;
+                            postOffice.InternalPackages++;
+                            postOffice.Packages++;
                             break;
                         }
                         case 4: {
-                            if (first.Packages(first.input[i])){
-                                first.InternalMedium++;
+                            if (postOffice.Packages(postalItem)){
+                                postOffice.InternalMedium++;
                             }
                             break;
                         }
                         case 5: {
-                            first.InternalPostcards++;
+                            postOffice.InternalPostcards++;
                             break;
                         }
                         case 8: {
-                            if (first.Packages(first.input[i])) {
-                                first.InternalLite++;
+                            if (postOffice.Packages(postalItem)) {
+                                postOffice.InternalLite++;
                             }
                             break;
                         }
                     }
                 } else {
 
-                    switch (Character.getNumericValue(first.input[i].charAt(j))) { // or one from the specified types as parameter
+                    switch (Character.getNumericValue(postalItem.charAt(j))) { // or one from the specified types as parameter
                         case 1: {
-                            first.ExternalChecks++;
+                            postOffice.ExternalChecks++;
                             break;
                         }
                         case 2: {
-                            if (first.Packages(first.input[i])) {
-                                first.ExternalHeavy++;
+                            if (postOffice.Packages(postalItem)) {
+                                postOffice.ExternalHeavy++;
                             }
                             break;
                         }
                         case 3: {
-                            first.ExternalPackages++;
+                            postOffice.ExternalPackages++;
                             break;
                         }
                         case 4: {
-                            if (first.Packages(first.input[i])) {
-                                first.ExternalMedium++;
+                            if (postOffice.Packages(postalItem)) {
+                                postOffice.ExternalMedium++;
                             }
                             break;
                         }
                         case 5: {
-                            first.ExternalPostcards++;
+                            postOffice.ExternalPostcards++;
                             break;
                         }
                         case 8: {
-                            if (first.Packages(first.input[i])) {
-                                first.ExternalLite++;
+                            if (postOffice.Packages(postalItem)) {
+                                postOffice.ExternalLite++;
                             }
                             break;
                         }
@@ -131,27 +135,27 @@ public class condTestLogistic {
             }
         }
 
-        result.append("Received: ").append(first.input.length).append(" items from which:").append(LINE_END);
+        result.append("Received: ").append(postOffice.input.length).append(" items from which:").append(LINE_END);
 
-        result.append("          Internal item: ").append(first.InternalChecks + first.InternalPackages + first.InternalPostcards).append(LINE_END);
-        result.append("                 Packages: ").append(first.InternalPackages).append(LINE_END);
-        result.append("                         Heavy: ").append(first.InternalHeavy).append(LINE_END);
-        result.append("                         Medium: ").append(first.InternalMedium).append(LINE_END);
-        result.append("                         Lite: ").append(first.InternalLite).append(LINE_END);
-        result.append("                 Checks: ").append(first.InternalChecks).append(LINE_END);
-        result.append("                 Postcards: ").append(first.InternalPostcards).append(LINE_END);
-        result.append("          External item: ").append(first.ExternalChecks + first.ExternalPackages + first.ExternalPostcards).append(LINE_END);
-        result.append("                 Packages: ").append(first.ExternalPackages).append(LINE_END);
-        result.append("                         Heavy: ").append(first.ExternalHeavy).append(LINE_END);
-        result.append("                         Medium: ").append(first.ExternalMedium).append(LINE_END);
-        result.append("                         Lite: ").append(first.ExternalLite).append(LINE_END);
-        result.append("                 Checks: ").append(first.ExternalChecks).append(LINE_END);
-        result.append("                 Postcards: ").append(first.ExternalPostcards).append(LINE_END);
-        result.append("PackagesTotal ").append(first.ExternalPackages + first.InternalPackages).append(LINE_END);
-        result.append("ChecksTotal ").append(first.ExternalChecks + first.InternalChecks).append(LINE_END);
-        result.append("PostcardsTotal ").append(first.ExternalPostcards + first.InternalPostcards).append(LINE_END);
+        result.append("          Internal item: ").append(postOffice.InternalChecks + postOffice.InternalPackages + postOffice.InternalPostcards).append(LINE_END);
+        result.append("                 Packages: ").append(postOffice.InternalPackages).append(LINE_END);
+        result.append("                         Heavy: ").append(postOffice.InternalHeavy).append(LINE_END);
+        result.append("                         Medium: ").append(postOffice.InternalMedium).append(LINE_END);
+        result.append("                         Lite: ").append(postOffice.InternalLite).append(LINE_END);
+        result.append("                 Checks: ").append(postOffice.InternalChecks).append(LINE_END);
+        result.append("                 Postcards: ").append(postOffice.InternalPostcards).append(LINE_END);
+        result.append("          External item: ").append(postOffice.ExternalChecks + postOffice.ExternalPackages + postOffice.ExternalPostcards).append(LINE_END);
+        result.append("                 Packages: ").append(postOffice.ExternalPackages).append(LINE_END);
+        result.append("                         Heavy: ").append(postOffice.ExternalHeavy).append(LINE_END);
+        result.append("                         Medium: ").append(postOffice.ExternalMedium).append(LINE_END);
+        result.append("                         Lite: ").append(postOffice.ExternalLite).append(LINE_END);
+        result.append("                 Checks: ").append(postOffice.ExternalChecks).append(LINE_END);
+        result.append("                 Postcards: ").append(postOffice.ExternalPostcards).append(LINE_END);
+        result.append("PackagesTotal ").append(postOffice.ExternalPackages + postOffice.InternalPackages).append(LINE_END);
+        result.append("ChecksTotal ").append(postOffice.ExternalChecks + postOffice.InternalChecks).append(LINE_END);
+        result.append("PostcardsTotal ").append(postOffice.ExternalPostcards + postOffice.InternalPostcards).append(LINE_END);
         System.out.println(result);
-
+        System.out.println(Character.getNumericValue('Z'));
 
     }
 
