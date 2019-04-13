@@ -1,3 +1,5 @@
+package com.javatrainer.module3.flowcontrol;
+
 import java.util.Random;
 
 public class InitializeRandomNumbers {

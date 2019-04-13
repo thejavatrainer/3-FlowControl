@@ -1,3 +1,5 @@
+package com.javatrainer.module3.flowcontrol;
+
 public class ConstructorMinMax {
     int field1, field2, field3;
 

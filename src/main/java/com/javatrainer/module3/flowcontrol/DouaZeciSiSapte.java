@@ -1,4 +1,4 @@
-import com.javatrainer.module3.flowcontrol.Person;
+package com.javatrainer.module3.flowcontrol;
 
 import java.util.Random;
 

@@ -1,3 +1,5 @@
+package com.javatrainer.module3.flowcontrol;
+
 public class CondTestLogistic {
     private String input[] = new String[]{"734", "985", "785", "734", "734", "785", "738", "983", "781", "781", "923", "785"};
     //    private Integer PackagesTotal = 0;
