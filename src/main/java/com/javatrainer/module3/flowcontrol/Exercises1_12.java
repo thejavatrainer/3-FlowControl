@@ -11,8 +11,8 @@ public class Exercises1_12 {
         return a * b;
     }
 
-    public static Boolean getEven(int a) { //TODO: better name choice: isEven
-        return a % 2 == 0;
+    public static Boolean isEven(int a) { //TODO: better name choice: isEven
+        return (a & 1) == 0;
     }
 
     public static boolean containNumberTwo(int a) {
@@ -30,7 +30,7 @@ public class Exercises1_12 {
     }
 
     public static Boolean getPositiv(int a) {
-        return a >= 0;
+        return a > 0;
     } //TODO: positiv is just when >0 :)
 
     public static int countNumbers(int[] a) { //TODO: a better name coice for this method would be sumNumbers or getSum
