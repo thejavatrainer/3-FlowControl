@@ -11,7 +11,7 @@ public class Exercises1_12 {
         return a * b;
     }
 
-    public static Boolean getEven(int a) {
+    public static Boolean getEven(int a) { //TODO: better name choice: isEven
         return a % 2 == 0;
     }
 
@@ -31,9 +31,9 @@ public class Exercises1_12 {
 
     public static Boolean getPositiv(int a) {
         return a >= 0;
-    }
+    } //TODO: positiv is just when >0 :)
 
-    public static int countNumbers(int[] a) {
+    public static int countNumbers(int[] a) { //TODO: a better name coice for this method would be sumNumbers or getSum
         int j = 0;
         for (int i = 0; i < a.length; i++) {
             j = j + a[i];
@@ -42,18 +42,18 @@ public class Exercises1_12 {
         return j;
     }
 
-    public static float mediaNumbers(int[] a) {
+    public static float mediaNumbers(int[] a) { //TODO: better name choice like: calculateNumbersAverage
         int j = 0;
         for (int i = 0; i < a.length; i++) {
             j = j + a[i];
 
         }
-        return ((float) j) / a.length;
+        return ((float) j) / a.length; //TODO: this is not an error, but usually we work with double... however indeed the best fit in this case is float (represented on 4 bytes) instead of double (represented in 8 bytes)
     }
 
     public static float mediaNumbersEven(int[] a) {
-        int j = 0;
-        int x = 0;
+        int j = 0; //TODO: this is in fact the evenNumbersSum :)
+        int x = 0; //TODO: this is in fact the evenNumberCount :)
         for (int i = 0; i < a.length; i++) {
             if (getEven(a[i])) {
                 j = j + a[i];
@@ -65,13 +65,19 @@ public class Exercises1_12 {
         return ((float) j) / x;
     }
 
-    public static float produsulNumbersOdd(int[] a) {
+    public static float produsulNumbersOdd(int[] a) { //TODO: verbose names ;-)
         float j = 1;
 
         for (int i = 0; i < a.length; i++) {
             if (!getEven(a[i])) {
                 j = j * a[i];
-
+                //TODO: however it was not a topic for this training,
+                //TODO: here you can do an optimisation: like if once j becomes 0, there is no chance to become other number
+                //TODO: so, this means would perfect a check like:
+                //TODO: if (j==0) {
+                //TODO:     break;
+                //TODO: }
+                //TODO: but once again, this is just an optimisation
             }
 
 
