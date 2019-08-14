@@ -303,6 +303,12 @@ public class Conditionals {
             case MARTIE:
                 response = 31;
         }
+        int i=0;
+        int arr[] =  new int[]{1,2,3};
+        //....
+        arr[i]=2;
+        i=i+1;
+        //....
     }
 }
 
